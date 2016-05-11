@@ -1,12 +1,3 @@
-# SprintApp
-[![Build Status](https://travis-ci.org/macfanatic/SprintApp.png)](https://travis-ci.org/macfanatic/SprintApp)
-
-
-## DEPRECATED
-This project has not seen any community contributions for a year now, and I have not had time for the project, or the need, for an even longer period of time.
-
-If you're interested in becoming a contributor, please hit me up on twitter at [@macfanatic](https://twitter.com/macfanatic)
-
 ## Overview
 
 Project management and time tracking should be easy. SprintApp is simple to use so you can focus on running your business and focus on what you do best.  [Redmine](http://www.redmine.org) is great for some teams, but we think it's difficult to use and doesn't look that great.  SprintApp aims to solve those issues and more!
@@ -93,21 +84,3 @@ There are a few ways you can customize SprintApp for your needs.
 1. [Configure Carrierwave for Amazon S3](https://github.com/jnicklas/carrierwave#using-amazon-s3)
 2. Edit the from address for [Devise](https://github.com/plataformatec/devise) in the existing initializer
 3. Edit the SMTP settings for outgoing mail (needed to email notifications of ticket updates) for the production environment.
-
-## Contributing
-This is a guide to contributing to SprintApp. It should walk you through the major steps of contributing to this project.
-
-### 1. Create an Issue on Github
-The first step is to create an issue with [GitHub Issues](https://github.com/macfanatic/SprintApp/issues), after searching the issues to make sure that another developer hasn't already submitted the same ticket.
-
-Please be thorough in your description of the issue or feature request, and provide all relevant environment information if submitting a bug ticket.
-
-### 2. Fork and Create a Feature Branch
-If you have implemented a new feature of fixed a bug, please create a new git branch on your fork of the SprintApp project, labeled after the ticket you created in step 1.  This way when you submit a pull request to have your code integrated into the project, it is easily referenced.
-
-### 3. Submit a Pull Request
-After you are sure that your code change is ready for integration, please submit a pull request for your feature branch on github.  I will review the code and work with you to make any necessary changes before merging your pull request into the main branch.
-
-
-## License
-Copyright (c) 2012 [Matt Brewer](https://github.com/macfanatic). MIT License.
