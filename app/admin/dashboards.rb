@@ -4,7 +4,7 @@ ActiveAdmin::Dashboards.build do
   # Welcome widgets
   ###################################
   
-  section "Welcome to SprintApp", :if => proc { current_admin_user.new_user? } do
+  section "Welcome to CortexCraft Ticket", :if => proc { current_admin_user.new_user? } do
     current_admin_user.welcome!
     text_node(render "dashboard/welcome")
   end

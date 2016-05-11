@@ -1,7 +1,7 @@
 defaults: &defaults
   email:
-    notifications_sender: 'notifications@sprintapp.com'
-    devise_sender: 'support@sprintapp.com'
+    notifications_sender: 'notifications@cortexcraft.com'
+    devise_sender: 'support@cortexcraft.com'
 
 development:
   <<: *defaults
