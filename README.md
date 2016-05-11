@@ -45,7 +45,7 @@ Reports include:
 SprintApp is easy to setup and get started.
 
 ### Jump Start on Heroku
-To get started with SprintApp on Heroku quickly, see our [Deploying to Heroku Guide](https://github.com/macfanatic/SprintApp/wiki/Deploying-to-Heroku).
+To get started with SprintApp on Heroku quickly, see our [Deploying to Heroku Guide](https://github.com/CortexCraft-Innovation-Labs/SprintApp/wiki/Deploying-to-Heroku-SprintApp).
 
 ### Requirements
 SprintApp is built upon the following great community gems:
