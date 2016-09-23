@@ -1,3 +1,32 @@
+# == Schema Information
+#
+# Table name: admin_users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(128)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0)
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  created_at             :datetime
+#  updated_at             :datetime
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  role                   :string(255)      default("admin")
+#  time_zone              :string(255)
+#  suspended_at           :datetime
+#  suspension_reason      :string(255)
+#  new_user               :boolean          default(TRUE)
+#  send_welcome_email     :boolean          default(TRUE)
+#  avatar                 :string(255)
+#  github                 :string(255)
+#
+
 class AdminUser < ActiveRecord::Base
   
   ROLES = %w(admin employee)

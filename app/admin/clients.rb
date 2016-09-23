@@ -4,8 +4,9 @@ ActiveAdmin.register Client, :sort_order => "name_asc" do
   controller.authorize_resource
   controller.resources_configuration[:self][:finder] = :find_by_url!
   
-  menu :parent => "Administration", :if => proc { can?( :manage, Client) }
-    
+  #menu :parent => "Administration", :if => proc { can?( :manage, Client) }
+  menu :if => proc { false }
+
   filter :name
   filter :created_at
   filter :updated_at

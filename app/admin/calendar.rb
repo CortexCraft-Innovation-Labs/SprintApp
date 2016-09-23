@@ -1,6 +1,7 @@
 ActiveAdmin.register_page "Calendar" do
   
-  menu :priority => 2
+  #menu :priority => 2
+  menu false
   
   action_item do
     link_to "New Ticket", new_ticket_path if can?(:create, Ticket)

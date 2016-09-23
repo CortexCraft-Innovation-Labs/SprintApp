@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: milestones
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  start_date  :date
+#  end_date    :date
+#  description :text
+#  project_id  :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  completed   :boolean          default(FALSE)
+#  url         :string(255)
+#
+
 class Milestone < ActiveRecord::Base
   
   belongs_to :project

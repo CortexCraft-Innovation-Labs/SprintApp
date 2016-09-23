@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: ticket_comments
+#
+#  id         :integer          not null, primary key
+#  body       :text
+#  version_id :integer
+#  ticket_id  :integer
+#  time       :decimal(19, 4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class TicketComment < ActiveRecord::Base
   
   has_paper_trail

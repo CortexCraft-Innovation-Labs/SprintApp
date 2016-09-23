@@ -47,12 +47,12 @@ ActiveAdmin.register AdminUser, :sort_order => "email_desc" do
   filter :created_at
   filter :updated_at
   
-  batch_action :deactivate, { if: proc{ can? :deactivate, AdminUser }, confirm: 'Are you sure you want to deactivate these users? This will prevent them from logging in to CortexCraft Ticket.' } do |selected_ids|
+  batch_action :deactivate, { if: proc{ can? :deactivate, AdminUser }, confirm: 'Are you sure you want to deactivate these users? This will prevent them from logging in to Factspan Ticket.' } do |selected_ids|
     AdminUser.find(selected_ids).each { |u| u.suspend! }
     redirect_to collection_path, notice: "Successfully deactivated #{selected_ids.count} users."
   end
   
-  batch_action :activate, { if: proc { can? :activate, AdminUser } , confirm: 'Are you sure you want to activate these users? This will allow them to login to CortexCraft Ticket.' } do |selected_ids|
+  batch_action :activate, { if: proc { can? :activate, AdminUser } , confirm: 'Are you sure you want to activate these users? This will allow them to login to Factspan Ticket.' } do |selected_ids|
     AdminUser.find(selected_ids).each { |u| u.unsuspend! }
     redirect_to collection_path, notice: "Succesfully activated #{selected_ids.count} users."
   end

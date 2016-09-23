@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: ticket_priorities
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  weight     :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class TicketPriority < ActiveRecord::Base
   
   WEIGHTS = %w(low normal high immediate).freeze

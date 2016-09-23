@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: contacts
+#
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  email          :string(255)
+#  addressable_id :integer
+#  client_id      :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  cell           :integer
+#  phone          :integer
+#
+
 class Contact < ActiveRecord::Base
   
   belongs_to :client

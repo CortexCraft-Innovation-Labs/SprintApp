@@ -2,7 +2,8 @@ ActiveAdmin.register Team, :sort_order => "name_asc" do
   
   controller.authorize_resource
   
-  menu :parent => "Administration", :if => proc { can?(:index, Team) }
+  #menu :parent => "Administration", :if => proc { can?(:index, Team) }
+  menu false
     
   filter :name
   filter :description

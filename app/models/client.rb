@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: clients
+#
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  addressable_id :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  hourly_rate    :decimal(10, 2)   default(0.0)
+#  url            :string(255)
+#
+
 class Client < ActiveRecord::Base
 
   include Addressable

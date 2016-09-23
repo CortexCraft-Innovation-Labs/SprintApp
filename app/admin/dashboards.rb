@@ -4,7 +4,7 @@ ActiveAdmin::Dashboards.build do
   # Welcome widgets
   ###################################
   
-  section "Welcome to CortexCraft Ticket", :if => proc { current_admin_user.new_user? } do
+  section "Welcome to Factspan Ticket", :if => proc { current_admin_user.new_user? } do
     current_admin_user.welcome!
     text_node(render "dashboard/welcome")
   end
@@ -14,15 +14,18 @@ ActiveAdmin::Dashboards.build do
   # Account level dashboard widgets
   ###################################
   
+=begin
   section "My Sprint", :priority => 1, :if => proc { current_admin_user.welcomed? } do
     table_for Ticket.owned_by(current_admin_user).current_sprint do |attr_table|
       render "dashboard/tickets", :context => self
     end
   end
+
   
   section "My Stats", priority: 2, if: proc { current_admin_user.welcomed? } do
     text_node( render "shared/user_statistics", user: current_admin_user )    
   end
+=end
   
   section "My Late Tickets", :if => proc { current_admin_user.employee? and current_admin_user.welcomed? }, :priority => 3 do
     table_for Ticket.overdue.owned_by(current_admin_user) do |attr_table|
@@ -49,6 +52,7 @@ ActiveAdmin::Dashboards.build do
     end
   end
   
+=begin
   section "Projects I Own", :if => proc { current_admin_user.admin? and current_admin_user.welcomed? }, :priority => 20 do
     table_for Project.owned_by(current_admin_user) do |attr_table|
       render "dashboard/projects", :context => self
@@ -60,5 +64,6 @@ ActiveAdmin::Dashboards.build do
       render "dashboard/projects", :context => self
     end
   end
+=end
 
 end

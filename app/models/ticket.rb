@@ -1,8 +1,35 @@
+# == Schema Information
+#
+# Table name: tickets
+#
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  description        :text
+#  start_date         :date
+#  end_date           :date
+#  ticket_category_id :integer
+#  assignee_id        :integer
+#  milestone_id       :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  status_id          :integer
+#  estimated_time     :decimal(19, 4)   default(0.0)
+#  actual_time        :decimal(19, 4)   default(0.0)
+#  billable           :boolean          default(TRUE)
+#  ticket_priority_id :integer
+#  project_id         :integer
+#  url                :string(255)
+#  number             :integer
+#  budget_progress    :decimal(19, 4)
+#  ticket_type_id     :integer          not null
+#
+
 class Ticket < ActiveRecord::Base
     
   has_paper_trail skip: [:budget_progress]
     
   belongs_to :milestone
+  belongs_to :ticket_type
   belongs_to :ticket_category
   belongs_to :ticket_priority
   belongs_to :status, :class_name => "TicketStatus", :foreign_key => "status_id"
@@ -12,7 +39,8 @@ class Ticket < ActiveRecord::Base
   has_many :ticket_comments, :order => 'ticket_comments.created_at asc', :dependent => :destroy
   has_many :teams, :through => :assignee
   has_many :ticket_timers, dependent: :destroy
-  
+  has_many :ticket_files, dependent: :destroy
+
   accepts_nested_attributes_for :ticket_comments
   
   validates :name, :ticket_category, :ticket_priority, :status, :start_date, :description, :presence => true

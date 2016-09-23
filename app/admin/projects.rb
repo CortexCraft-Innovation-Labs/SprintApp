@@ -1,7 +1,7 @@
 ActiveAdmin.register Project, :sort_order => "number_asc" do
     
-  menu :priority => 4
-  
+  menu :if => proc{ can?(:manage, Project ) }
+
   # for use with cancan
   controller.authorize_resource find_by: :url
   controller.resources_configuration[:self][:finder] = :find_by_url!

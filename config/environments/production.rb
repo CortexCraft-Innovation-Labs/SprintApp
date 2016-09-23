@@ -60,7 +60,7 @@ Timetracker::Application.configure do
   
   # ActionMailer Config
   config.action_mailer.perform_deliveries = false
-  config.action_mailer.default_url_options = { :host => 'cortexcraft.com' }
+  config.action_mailer.default_url_options = { :host => 'factspan.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => 'smtp.sendgrid.net',
@@ -68,7 +68,7 @@ Timetracker::Application.configure do
     :authentication => :plain,
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'cortexcraft.com'
+    :domain => 'factspan.com'
   }
     
 end

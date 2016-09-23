@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: ticket_timers
+#
+#  id            :integer          not null, primary key
+#  admin_user_id :integer
+#  ticket_id     :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class TicketTimer < ActiveRecord::Base
   
   belongs_to :admin_user

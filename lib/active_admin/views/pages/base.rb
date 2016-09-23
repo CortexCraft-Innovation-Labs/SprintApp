@@ -57,52 +57,26 @@ module ActiveAdmin
           unless active_admin_config.nil?
             
             res = active_admin_config.resource_name.underscore
-            if %w(project milestone ticket project_file).include? res 
+            if %w(ticket ticket_file).include? res
               
-              return if res == "project" and ( current_page?(:action => :new) or current_page?(:action => :index) )
-              return if res == "ticket" and params[:project_id].blank?
-              
-              if @resource.nil?
-                project_id = params.include?( :project_id ) ? params[:project_id] : params[:id]
-                current_project = Project.find_by_url!(project_id) rescue return 
-              else
-                current_project = res == "project" ? @resource : @resource.project
-              end
-              
+              return if res == "ticket" and (params[:project_id].present? and params[:id].blank?)
+               ticket_id = params.include?( :ticket_id ) ? params[:ticket_id] : params[:id]
+               current_ticket = Ticket.find_by_url!(ticket_id) rescue return
+               current_project = Project.first
+
               div :id => "detail_nav" do
-              
+
                 ul :id => "tabs" do
-                                    
-                  opts = ( res == "project" and current_page?( :action => :roadmap ) ) ? { :class => "current" } : {}
-                  li opts do
-                    link_to "Roadmap", roadmap_project_path( current_project )
-                  end
-        
                   opts = res == "ticket" ?  { :class => "current" } : nil
                   li opts do
-                    link_to "Tickets", project_tickets_path( current_project )
+                    link_to "Ticket", project_ticket_path( current_project, current_ticket )
                   end
-                                  
-                  opts = res == "milestone" ?  { :class => "current" } : nil
+
+                  opts = res == "ticket_file"  ? { :class => "current" } : nil
                   li opts do
-                    link_to "Milestones", project_milestones_path( current_project )
+                    link_to "Attachments", ticket_ticket_files_path( current_ticket )
                   end
-                  
-                  opts = ( res == "project" and current_page?( :action => :show ) ) ? { :class => "current" } : nil
-                  li opts do
-                    link_to "Overview", project_path( current_project )
-                  end   
-                  
-                  opts = ( res == "project" and current_page?( :action => :whiteboard ) ) ? { :class => "current" } : nil
-                  li opts do
-                    link_to "Whiteboard", whiteboard_project_path( current_project )
-                  end  
-                  
-                  opts = res == "project_file"  ? { :class => "current" } : nil
-                  li opts do
-                    link_to "Documents", project_project_files_path( current_project )
-                  end           
-                
+
                 end
               end
             end

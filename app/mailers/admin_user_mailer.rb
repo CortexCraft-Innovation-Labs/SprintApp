@@ -10,7 +10,7 @@ class AdminUserMailer < ActionMailer::Base
   private
     
     def subject
-      "Welcome to CortexCraft Ticket!"
+      "Welcome to Factspan Ticket!"
     end
   
 end

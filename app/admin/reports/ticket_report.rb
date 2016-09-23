@@ -38,7 +38,7 @@ ActiveAdmin.register_page "TicketReport" do
     private
       
       def projects
-        @tickets = Project.find(params[:project_id]).tickets rescue []
+        @tickets = Ticket.all
         @projects = Project.all
       end
     

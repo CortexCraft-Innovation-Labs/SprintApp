@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id               :integer          not null, primary key
+#  name             :string(255)
+#  start_date       :date
+#  end_date         :date
+#  description      :text
+#  client_id        :integer
+#  product_owner_id :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#  completed        :boolean          default(FALSE)
+#  hourly_rate      :decimal(10, 2)   default(0.0)
+#  whiteboard       :text
+#  number           :integer
+#  url              :string(255)
+#
+
 class Project < ActiveRecord::Base
   
   has_paper_trail

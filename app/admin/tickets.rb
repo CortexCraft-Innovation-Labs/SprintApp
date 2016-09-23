@@ -7,7 +7,7 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   belongs_to :project, finder: :find_by_url!, optional: true
   before_filter :find_ticket, only: [:move, :start_timer, :stop_timer, :ticket_time]
   
-  menu :parent => "Projects", :label => "All Tickets"
+  menu :label => "All Tickets", url: '/projects/factspan/tickets'
     
   form :partial => "form"
   
@@ -20,8 +20,9 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   filter :number, label: "Ticket ID#"
   filter :project, :as => :select, :collection => proc { @project.nil? ? Project.accessible_by(current_ability).active : [@project] }
   filter :ticket_priority, :collection => proc { TicketPriority.all }
-  filter :milestone, :collection => proc { @project.milestones.active.sorted rescue Milestone.where(project_id: Project.accessible_by(current_ability).pluck(:id)).active }
-  filter :billable, :as => :select
+  filter :ticket_type, :collection => proc { TicketType.all }
+  #filter :milestone, :collection => proc { @project.milestones.active.sorted rescue Milestone.where(project_id: Project.accessible_by(current_ability).pluck(:id)).active }
+  #filter :billable, :as => :select
   filter :ticket_category, :collection => proc { TicketCategory.all }
   filter :status, :collection => proc { TicketStatus.all }
   filter :assignee, :collection => proc { @project.members.active.sorted rescue AdminUser.active }
@@ -35,9 +36,11 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
   filter :updated_at
   
   action_item only: [:show, :edit] do
+=begin
     if can? :advanced_edit, resource
       link_to "Move", move_ticket_path(resource)
     end
+=end
   end
   
   # This adds a "New Ticket" button to the show view, and leaves the other "New Ticket" buttons alone everywhere else
@@ -103,8 +106,11 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
             th(:colspan => 4) { resource.name }
           end
           tr do
+            th { 'Type' }
+            td { resource.ticket_type.display_name }
             th { 'Tracker' }
             td { resource.ticket_category.display_name }
+=begin
             th { 'Milestone' }
             td do
               if resource.milestone.present?
@@ -113,6 +119,7 @@ ActiveAdmin.register Ticket, :sort_order => "ticket_priority_id_desc" do
                 span(class: :empty) { "empty" }
               end
             end
+=end
           end
           tr do
             th { 'Status' }

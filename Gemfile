@@ -56,3 +56,6 @@ end
 
 # Charting
 gem 'google_charts'
+
+# Annotate Tables
+gem 'annotate'

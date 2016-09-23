@@ -1,7 +1,7 @@
 defaults: &defaults
   email:
-    notifications_sender: 'notifications@cortexcraft.com'
-    devise_sender: 'support@cortexcraft.com'
+    notifications_sender: 'notifications@factspan.com'
+    devise_sender: 'support@factspan.com'
 
 development:
   <<: *defaults
